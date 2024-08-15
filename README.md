@@ -12,3 +12,6 @@
 ![Launch ec2 03](https://github.com/user-attachments/assets/df6b57ae-0d12-4810-ac22-4f6d18a916c0)
 
 ![Launch ec2 04](https://github.com/user-attachments/assets/983d2db7-9293-4cd7-a8f4-e5b65ec679ba)
+
+
+![Welcome to Nginx](https://github.com/user-attachments/assets/2268b396-9ab6-4648-98d3-936cec88dc23)
