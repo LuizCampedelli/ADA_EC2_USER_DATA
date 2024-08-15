@@ -1,15 +1,23 @@
 #!/bin/bash
-# Atualizar os pacotes e o sistema
-yum update -y
+# Atualizar pacotes
+sudo yum update -y
 
-# Instalar o servidor web Nginx
-amazon-linux-extras install nginx1 -y
+# Instalar Nginx usando yum
+sudo yum install nginx -y
 
-# Iniciar o serviço Nginx e habilitá-lo para iniciar automaticamente no boot
-systemctl start nginx
-systemctl enable nginx
+# Verificar se a instalação foi bem-sucedida
+if ! command -v nginx &> /dev/null
+then
+    echo "Nginx não foi instalado com sucesso" >&2
+    exit 1
+fi
 
-# Criar a página HTML simples
+# Iniciar o serviço Nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+# Criar uma página HTML personalizada
+sudo mkdir -p /usr/share/nginx/html
 echo "<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,11 +96,7 @@ echo "<!DOCTYPE html>
     </script>
 </body>
 </html>
-" > /usr/share/nginx/html/index.html
+" | sudo tee /usr/share/nginx/html/index.html
 
-# Configurar permissões (se necessário)
-chown nginx:nginx /usr/share/nginx/html/index.html
-chmod 644 /usr/share/nginx/html/index.html
-
-# Reiniciar o serviço Nginx para garantir que as alterações sejam aplicadas
-systemctl restart nginx
+# Reiniciar o Nginx para garantir que as mudanças sejam aplicadas
+sudo systemctl restart nginx
