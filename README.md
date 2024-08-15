@@ -42,7 +42,7 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 
 ![Launch ec2 01](https://github.com/user-attachments/assets/61f08ba7-21c3-4f2f-bfe1-c7963fce7aca)
 
-![Launch ec2 02](https://github.com/user-attachments/assets/8dfbf4d8-73f0-469a-a65a-db03bb20ebad)
+![vpc](https://github.com/user-attachments/assets/2839bc87-98e6-430a-ade8-a0fbd02675cd)
 
 ![Launch ec2 03](https://github.com/user-attachments/assets/df6b57ae-0d12-4810-ac22-4f6d18a916c0)
 
