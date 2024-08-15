@@ -46,7 +46,7 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 
 ![Launch ec2 03](https://github.com/user-attachments/assets/df6b57ae-0d12-4810-ac22-4f6d18a916c0)
 
-## User data code is in user_data.txt, in code of this repo.
+## User data code is in user_data.md, in code of this repo.
 
 ![Launch ec2 04](https://github.com/user-attachments/assets/983d2db7-9293-4cd7-a8f4-e5b65ec679ba)
 
