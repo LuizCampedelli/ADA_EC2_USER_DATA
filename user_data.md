@@ -15,71 +15,80 @@ echo "<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao Servidor Nginx</title>
+    <title>Matrix Presentation</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: black;
-            color: #00FF00;
+            background-color: black;
             font-family: monospace;
-            font-size: 15px;
+            color: #0F0;
+            font-size: 24px;
         }
 
-        .matrix {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+        .matrix-line {
+            display: flex;
+            overflow: hidden;
             white-space: nowrap;
         }
 
-        .text-animation span {
+        .matrix-char {
             display: inline-block;
-            opacity: 0;
-            animation: animate 2s linear infinite;
-        }
-
-        @keyframes animate {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
         }
     </style>
 </head>
 <body>
-    <div class="matrix" id="matrix-container"></div>
+    <div class="matrix-line" id="matrixText">
+        <!-- Characters will be dynamically inserted here by JavaScript -->
+    </div>
 
     <script>
-        const message = "Bem-vindo ao servidor web Nginx configurado automaticamente! Este servidor está rodando em uma instância Amazon Linux.";
-        const matrixContainer = document.getElementById('matrix-container');
+        const finalText = "Bem vindo ao AWS Nginx, deploy em EC2 com User Data.";
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        const matrixLine = document.getElementById("matrixText");
 
-        function createMatrixEffect() {
-            matrixContainer.innerHTML = '';
-            for (let i = 0; i < message.length; i++) {
-                const span = document.createElement('span');
-                span.textContent = message[i];
-                span.style.animationDelay = `${i * 0.1}s`;
-                matrixContainer.appendChild(span);
+        // Initialize the line with random characters
+        for (let i = 0; i < finalText.length; i++) {
+            const span = document.createElement("span");
+            if (finalText[i] === " ") {
+                span.innerHTML = "&nbsp;"; // Ensure proper spaces
+            } else {
+                span.textContent = characters[Math.floor(Math.random() * characters.length)];
             }
+            span.className = "matrix-char";
+            matrixLine.appendChild(span);
         }
 
-        setInterval(createMatrixEffect, 2000);
-        createMatrixEffect();
+        let iterations = 0;
+        const maxIterations = 3;
+        const interval = setInterval(() => {
+            for (let i = 0; i < finalText.length; i++) {
+                if (iterations < maxIterations) {
+                    // Change characters randomly
+                    if (finalText[i] !== " ") {
+                        matrixLine.children[i].textContent = characters[Math.floor(Math.random() * characters.length)];
+                    }
+                } else {
+                    // Settle on the final text with proper spaces
+                    if (finalText[i] === " ") {
+                        matrixLine.children[i].innerHTML = "&nbsp;";
+                    } else {
+                        matrixLine.children[i].textContent = finalText[i];
+                    }
+                }
+            }
+            iterations++;
+            if (iterations > maxIterations) {
+                clearInterval(interval); // Stop the animation after 3 iterations
+            }
+        }, 100); // Change every 100ms
     </script>
 </body>
-</html>" > /usr/share/nginx/html/index.html
+</html>
+" > /usr/share/nginx/html/index.html
 
 # Configurar permissões (se necessário)
 chown nginx:nginx /usr/share/nginx/html/index.html
