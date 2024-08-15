@@ -61,4 +61,4 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 
 ![Welcome to Nginx](https://github.com/user-attachments/assets/2268b396-9ab6-4648-98d3-936cec88dc23)
 
-## Have fun, kepp coding!!!
+## Have fun, keep coding!!!
