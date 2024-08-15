@@ -13,7 +13,7 @@ So, that's how is done:
 
 ## Demonstração
 
-![AWS EC2 USER DATA drawio (1)](https://github.com/user-attachments/assets/ce8e975a-3b8e-4fd1-8213-6f2e572d0e01)
+![AWS EC2 USER DATA](https://github.com/user-attachments/assets/ce8e975a-3b8e-4fd1-8213-6f2e572d0e01)
 
 
 
@@ -23,15 +23,7 @@ So, that's how is done:
 To deploy via command line, directly to EC2 instance connect or through the AWS CLI:
 
 ```bash
-  aws ec2 run-instances \
-  --image-id $IMAGE_ID \
-  --count 1 \
-  --instance-type $INSTANCE_TYPE \
-  --key-name $KEY_NAME \
-  --security-group-ids $SECURITY_GROUP_ID \
-  --subnet-id $SUBNET_ID \
-  --region $AWS_REGION \
-  --tag-specifications "ResourceType=instance,Tags=[{Key=$TAG_KEY,Value=$TAG_VALUE}]"
+  launch-instance.sh
 ```
 
 Or through the AWS Console:
@@ -46,7 +38,7 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 
 ![Launch ec2 03](https://github.com/user-attachments/assets/df6b57ae-0d12-4810-ac22-4f6d18a916c0)
 
-## User data code is in user_data.txt, in code of this repo.
+## User data code is in user-data.sh, in code of this repo.
 
 ![Launch ec2 04](https://github.com/user-attachments/assets/983d2db7-9293-4cd7-a8f4-e5b65ec679ba)
 
@@ -60,5 +52,6 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 ## Put in your browser and a page will display like this one:
 
 ![Welcome to Nginx](https://github.com/user-attachments/assets/2268b396-9ab6-4648-98d3-936cec88dc23)
+
 
 ## Have fun, keep coding!!!
