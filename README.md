@@ -49,7 +49,6 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 ```
 ## Put in your browser and a page will display like this one:
 
-![Welcome to Nginx](https://github.com/user-attachments/assets/2268b396-9ab6-4648-98d3-936cec88dc23)
-
+![Screenshot from 2024-08-16 12-22-51](https://github.com/user-attachments/assets/b3fb4a4b-56af-4229-9ac5-95edc264cf76)
 
 ## Have fun, keep coding!!!
