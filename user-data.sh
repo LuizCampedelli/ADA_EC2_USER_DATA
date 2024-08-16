@@ -20,10 +20,14 @@ fi
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
-# Criar uma página HTML personalizada
-# Create a custom HTML page
+# Criar o diretório se não existir
+# Create the directory if it doesn't exist
 sudo mkdir -p /usr/share/nginx/html
-echo "<!DOCTYPE html>
+
+# Criar a página HTML
+# Create the HTML page
+sudo bash -c 'cat > /usr/share/nginx/html/index.html' << EOF
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -89,18 +93,19 @@ echo "<!DOCTYPE html>
     </script>
 </body>
 </html>
-" | sudo tee /usr/share/nginx/html/index.html
+EOF
 
-# Criar um arquivo de estilo CSS personalizado
-# Create a custom CSS file
-echo "* {
+# Criar o arquivo CSS
+# Create the CSS file
+sudo bash -c 'cat > /usr/share/nginx/html/style.css' << EOF
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 html, body {
-  height: 100%; /* Para garantir que o corpo tenha altura total */
+  height: 100%;
 }
 
 body {
@@ -113,7 +118,7 @@ body {
 }
 
 .container {
-  flex: 1; /* Faz o contêiner principal expandir para ocupar o espaço disponível */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -121,9 +126,9 @@ body {
 
 .cabecalho {
   display: flex;
-  flex-direction: column; /* Changed from row to column for vertical stacking */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 2em 5%;
   gap: 2em;
   text-decoration: none;
@@ -132,7 +137,7 @@ body {
 
 .cabecalho h1 {
   font-size: 1.5rem;
-  text-align: center; /* Ensures text inside h1 is centered */
+  text-align: center;
 }
 
 .custom-hr {
@@ -219,7 +224,7 @@ footer a:hover {
 #scroll-top-btn:hover {
   background-color: #A6F750;
 }
-" | sudo tee /usr/share/nginx/html/style.css
+EOF
 
 # Reiniciar o Nginx para garantir que as mudanças sejam aplicadas
 # Restart Nginx to ensure the changes are applied
