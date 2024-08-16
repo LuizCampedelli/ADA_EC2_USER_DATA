@@ -70,6 +70,10 @@ body {
 
 .corpo .texto {
   margin: 1em 15%;
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+
 }
 
 .corpo p a {
