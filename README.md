@@ -16,8 +16,6 @@ So, that's how is done:
 ![AWS EC2 USER DATA](https://github.com/user-attachments/assets/ce8e975a-3b8e-4fd1-8213-6f2e572d0e01)
 
 
-
-
 ## Deploy
 
 To deploy via command line, directly to EC2 instance connect or through the AWS CLI:

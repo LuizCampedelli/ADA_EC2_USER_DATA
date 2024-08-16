@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* Para garantir que o corpo tenha altura total */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  background-color: #182319;
+  color: #fff;
+  margin: 0;
+}
+
+.container {
+  flex: 1; /* Faz o contêiner principal expandir para ocupar o espaço disponível */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: column; /* Changed from row to column for vertical stacking */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin: 2em 5%;
+  gap: 2em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cabecalho h1 {
+  font-size: 1.5rem;
+  text-align: center; /* Ensures text inside h1 is centered */
+}
+
+.custom-hr {
+  border: 0;
+  height: 2px;
+  background: #99f135;
+  margin: 1.5em 0;
+}
+
+.aluno {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 5%;
+  gap: 1em;
+}
+
+.corpo h2 {
+  margin-bottom: 1.5em;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 5%;
+  line-height: 1.8;
+}
+
+.corpo .texto {
+  margin: 1em 15%;
+}
+
+.corpo p a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.5s ease;
+}
+
+.corpo p a:hover {
+  color: #A6F750;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #182319;
+  width: 100%;
+}
+
+footer .contato {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.5s ease;
+}
+
+footer a:hover {
+  color: #A6F750;
+}
+
+#scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#scroll-top-btn:hover {
+  background-color: #A6F750;
+}

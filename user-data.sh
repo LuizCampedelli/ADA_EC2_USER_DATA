@@ -28,80 +28,198 @@ echo "<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Presentation</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: black;
-            font-family: monospace;
-            color: #0F0;
-            font-size: 24px;
-        }
-
-        .matrix-line {
-            display: flex;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .matrix-char {
-            display: inline-block;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="https://ada-site-frontend.s3.sa-east-1.amazonaws.com/home/header-logo.svg" type="image/x-icon">
+    <title>Projeto 03</title>
 </head>
 <body>
-    <div class="matrix-line" id="matrixText">
-        <!-- Characters will be dynamically inserted here by JavaScript -->
+    <div class="container">
+        <div class="cabecalho">
+            <a href="https://ada.tech/" target="_blank"><img src="https://ada-site-frontend.s3.sa-east-1.amazonaws.com/home/header-logo.svg" alt="Logotipo da ADA" class="sc-252c66c8-7 fWMNFR"></a>
+            <h1>Santander Coders Projeto Web Deploy na AWS EC2</h1>
+            <a href="https://www.santanderopenacademy.com/pt_br/index.html" target="_blank"><img class="santander-header__logo-image" src="https://pro-becas-images-s3.s3.eu-west-1.amazonaws.com/images/logo-soa.svg" alt="Logotipo Santander Open Academy"></a>
+        </div>
+        <hr class="custom-hr">
+        <div class="aluno">
+            <h2>Autor</h2>
+            <h3>Luiz Otavio Campedelli</h3>
+            <h4>Id: 1182001</h4>
+        </div>
+        <hr class="custom-hr">
+        <div class="corpo">
+            <h2>Agradecimentos</h2>
+            <div class="texto">
+                <p>Gostaria de expressar minha sincera gratidão aos professores <strong><a href="https://www.linkedin.com/in/herika-machado-6082441a/" target="_blank">Hérika Machado</a></strong> e <strong><a href="https://www.linkedin.com/in/daniel-vieira-9a9680127/" target="_blank">Daniel Vieira</a></strong> pela dedicação, paciência e orientação durante todo o curso de Sistema Operacional Linux. Seus ensinamentos foram fundamentais para o meu desenvolvimento e compreensão das complexidades desse sistema. Através do seu compromisso e apoio, pude aprofundar meus conhecimentos e construir as bases necessárias para continuar minha jornada no mundo da tecnologia.
+                <br>
+                <br>Agradeço, também, pela motivação contínua e pelo encorajamento para superar os desafios ao longo do curso. Sem suas contribuições, este projeto não seria possível.
+                <br>
+                <br>Quero também expressar meu agradecimento aos meus colegas de turma. O compartilhamento de conhecimento e a colaboração ao longo do curso foram essenciais para meu aprendizado e crescimento. Juntos, enfrentamos os desafios e nos apoiamos em cada etapa do caminho.
+                <br>
+                <br>Obrigado por todo o conhecimento compartilhado e por serem uma fonte de inspiração.</p>
+            </div>
+        </div>
     </div>
-
+    <footer>
+        <div class="contato">
+            <a href="https://github.com/LuizCampedelli" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/luiz-otavio-campedelli" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>© 2024 <a href="" target="_blank">Luiz Otavio Campedelli</a></p>
+    </footer>
+    <button id="scroll-top-btn">↑</button>
     <script>
-        const finalText = "Bem vindo ao AWS Nginx, deploy em EC2 com User Data.";
-        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        const matrixLine = document.getElementById("matrixText");
-
-        // Initialize the line with random characters
-        for (let i = 0; i < finalText.length; i++) {
-            const span = document.createElement("span");
-            if (finalText[i] === " ") {
-                span.innerHTML = "&nbsp;"; // Ensure proper spaces
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        function handleScroll() {
+            if (window.scrollY > 100) {
+                scrollTopBtn.style.display = 'block';
             } else {
-                span.textContent = characters[Math.floor(Math.random() * characters.length)];
+                scrollTopBtn.style.display = 'none';
             }
-            span.className = "matrix-char";
-            matrixLine.appendChild(span);
         }
 
-        let iterations = 0;
-        const maxIterations = 3;
-        const interval = setInterval(() => {
-            for (let i = 0; i < finalText.length; i++) {
-                if (iterations < maxIterations) {
-                    // Change characters randomly
-                    if (finalText[i] !== " ") {
-                        matrixLine.children[i].textContent = characters[Math.floor(Math.random() * characters.length)];
-                    }
-                } else {
-                    // Settle on the final text with proper spaces
-                    if (finalText[i] === " ") {
-                        matrixLine.children[i].innerHTML = "&nbsp;";
-                    } else {
-                        matrixLine.children[i].textContent = finalText[i];
-                    }
-                }
-            }
-            iterations++;
-            if (iterations > maxIterations) {
-                clearInterval(interval); // Stop the animation after 3 iterations
-            }
-        }, 100); // Change every 100ms
+        window.addEventListener('scroll', handleScroll);
+
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        handleScroll();
     </script>
 </body>
 </html>
 " | sudo tee /usr/share/nginx/html/index.html
+
+# Criar um arquivo de estilo CSS personalizado
+# Create a custom CSS file
+echo "* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* Para garantir que o corpo tenha altura total */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  background-color: #182319;
+  color: #fff;
+  margin: 0;
+}
+
+.container {
+  flex: 1; /* Faz o contêiner principal expandir para ocupar o espaço disponível */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: column; /* Changed from row to column for vertical stacking */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin: 2em 5%;
+  gap: 2em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cabecalho h1 {
+  font-size: 1.5rem;
+  text-align: center; /* Ensures text inside h1 is centered */
+}
+
+.custom-hr {
+  border: 0;
+  height: 2px;
+  background: #99f135;
+  margin: 1.5em 0;
+}
+
+.aluno {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 5%;
+  gap: 1em;
+}
+
+.corpo h2 {
+  margin-bottom: 1.5em;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 5%;
+  line-height: 1.8;
+}
+
+.corpo .texto {
+  margin: 1em 15%;
+}
+
+.corpo p a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.5s ease;
+}
+
+.corpo p a:hover {
+  color: #A6F750;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #182319;
+  width: 100%;
+}
+
+footer .contato {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.5s ease;
+}
+
+footer a:hover {
+  color: #A6F750;
+}
+
+#scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#scroll-top-btn:hover {
+  background-color: #A6F750;
+}
+" | sudo tee /usr/share/nginx/html/style.css
 
 # Reiniciar o Nginx para garantir que as mudanças sejam aplicadas
 # Restart Nginx to ensure the changes are applied
