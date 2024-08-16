@@ -45,7 +45,7 @@ Add a name, select the Amazon Machine Image (AMI), in this case, Amazon Linux 20
 # Once launched, wait a few minutes to be ready, and access the EC2 panel, click in the instance id, choose the DNS Ipv4 address, will be like:
 
 ```http
- ec2-182-104-22-202.compute-1.amazon.com
+ ec2-s0m4-1p-address-here.compute-1.amazon.com
 ```
 ## Put in your browser and a page will display like this one:
 
