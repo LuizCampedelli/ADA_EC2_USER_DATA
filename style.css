@@ -128,3 +128,25 @@ footer a:hover {
 #scroll-top-btn:hover {
   background-color: #A6F750;
 }
+
+.matrix-paragraph {
+  color: #00FF00; /* Matrix green color */
+  font-family: 'Courier New', Courier, monospace; /* Monospaced font for a matrix feel */
+  white-space: nowrap;
+  overflow: hidden; /* Ensures text doesn't overflow the container */
+  border-right: 0.15em solid #00FF00; /* Blinking cursor effect */
+  font-size: 1.2em; /* Adjust size as needed */
+  width: 0; /* Initially hides the text */
+  animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 31%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #00FF00; }
+}
+
